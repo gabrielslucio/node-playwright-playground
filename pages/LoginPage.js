@@ -17,13 +17,13 @@ class LoginPage {
     }
 
     async login(user, pass) {
-        await this.page.fill(this.username, user);
-        await this.page.fill(this.password, pass);
-        await this.page.click(this.loginBtn);
+        await this.page.fill(this.selectors.username, user);
+        await this.page.fill(this.selectors.password, pass);
+        await this.page.click(this.selectors.loginBtn);
     }
 
     async getMessage(){
-        return this.page.locator(this.flash);
+        return this.page.locator(this.selectors.flash);
     }
 }
 

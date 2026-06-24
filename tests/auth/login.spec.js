@@ -32,3 +32,15 @@ test('login inválido', async({page}) => {
 
     await expect(message).toContainText('invalid');
 });
+
+test('username vazio', async({page}) => {
+    const loginPage = new LoginPage(page);
+
+    await loginPage.goto();
+
+    await loginPage.login('', '');
+
+    const message = await loginPage.getMessage();
+
+    await expect(message).toBeVisible();
+});

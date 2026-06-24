@@ -1,3 +1,6 @@
+const { URLS } = require('../constants/urls');
+
+
 class LoginPage {
     constructor(page) {
         this.page = page;
@@ -8,7 +11,7 @@ class LoginPage {
     }
 
     async goto() {
-        await this.page.goto('https://the-internet.herokuapp.com/login');
+        await this.page.goto(URLS.login);
     }
 
     async login(user, pass) {
@@ -21,3 +24,5 @@ class LoginPage {
         return this.page.locator(this.flash);
     }
 }
+
+module.exports = { LoginPage };

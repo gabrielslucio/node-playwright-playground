@@ -1,9 +1,14 @@
-await page.goto(URLS.login);
+const {test, expect} = require('@playwright/test');
+const {LoginPage} = require('../../pages/LoginPage');
 
-await loginPage.login(USERS.valid.username, USERS.valid.password);
+test('login sucesso', async ({page}) => {
+    const loginPage = new LoginPage(page);
 
-const {test, expect} = require('../fixtures/testSetup');
+    await loginPage.goto();
 
-test('dashboard aparece', async ({loggedPage}) => {
-    await expect(loggedPage.locator('h2')).toBeVisible();
+    await loginPage.login('tomsmith', 'SuperSecretPassword!');
+
+    const message = await loginPage.getMessage();
+
+    await expect(message).toContainText('You logged into a secure area!');
 });

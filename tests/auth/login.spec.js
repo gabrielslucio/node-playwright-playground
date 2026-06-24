@@ -1,12 +1,16 @@
 const {test, expect} = require('@playwright/test');
 const {LoginPage} = require('../../pages/LoginPage');
+const {USERS} = require('../../utils/data');
 
 test('login sucesso', async ({page}) => {
     const loginPage = new LoginPage(page);
 
     await loginPage.goto();
 
-    await loginPage.login('tomsmith', 'SuperSecretPassword!');
+    await loginPage.login(
+        USERS.valid.username,
+        USERS.valid.password
+    );
 
     const message = await loginPage.getMessage();
 
@@ -19,7 +23,10 @@ test('login inválido', async({page}) => {
 
     await loginPage.goto();
 
-    await loginPage.login('wrong', 'wrong');
+    await loginPage.login(
+        USERS.invalid.username,
+        USERS.invalide.password
+    );
 
     const message = await loginPage.getMessage();
 

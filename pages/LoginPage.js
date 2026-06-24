@@ -4,10 +4,12 @@ const { URLS } = require('../constants/urls');
 class LoginPage {
     constructor(page) {
         this.page = page;
-        this.username = "#username";
-        this.password = "#password";
-        this.loginBtn = 'button[type=submit]';
-        this.flash = '#flash';
+        this.selectors = {
+            username: '#username',
+            password: '#password',
+            loginBtn: 'button[type="submit"]',
+            flash: '#flash'
+        };
     }
 
     async goto() {

@@ -12,3 +12,16 @@ test('login sucesso', async ({page}) => {
 
     await expect(message).toContainText('You logged into a secure area!');
 });
+
+
+test('login inválido', async({page}) => {
+    const loginPage = new LoginPage(page);
+
+    await loginPage.goto();
+
+    await loginPage.login('wrong', 'wrong');
+
+    const message = await loginPage.getMessage();
+
+    await expect(message).toContainText('invalid');
+});

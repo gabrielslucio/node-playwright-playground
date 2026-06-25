@@ -50,11 +50,6 @@ class LoginPage{
     async getMessage() {
         return this.page.locator('#flash');
     }
-
 }
-
-
-
-
 
 module.exports = { LoginPage };

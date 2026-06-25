@@ -25,7 +25,7 @@ test('login inválido', async({page}) => {
 
     await loginPage.login(
         USERS.invalid.username,
-        USERS.invalide.password
+        USERS.invalid.password
     );
 
     const message = await loginPage.getMessage();
